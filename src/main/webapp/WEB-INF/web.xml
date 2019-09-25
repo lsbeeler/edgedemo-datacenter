@@ -6,28 +6,29 @@
     <display-name>Hazelcast Jet IoT Demo</display-name>
 
     <servlet>
-        <servlet-name>StartServlet</servlet-name>
-        <servlet-class>org.hazelcast.iotdemo.StartServlet</servlet-class>
+        <servlet-name>StateControlServlet</servlet-name>
+        <servlet-class>org.hazelcast.edgedemo.StateControlServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet>
         <servlet-name>GeolocationServlet</servlet-name>
-        <servlet-class>org.hazelcast.iotdemo.GeolocationServlet</servlet-class>
+        <servlet-class>org.hazelcast.edgedemo.GeolocationServlet</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>PolicyServlet</servlet-name>
-        <servlet-class>org.hazelcast.iotdemo.PolicyServlet</servlet-class>
+        <servlet-class>org.hazelcast.edgedemo.PolicyServlet</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>AverageSpeedServlet</servlet-name>
-        <servlet-class>org.hazelcast.iotdemo.AverageSpeedServlet</servlet-class>
+        <servlet-class>org.hazelcast.edgedemo.AverageSpeedServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>StartServlet</servlet-name>
-        <url-pattern>/start</url-pattern>
+        <servlet-name>StateControlServlet</servlet-name>
+        <url-pattern>/control</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>

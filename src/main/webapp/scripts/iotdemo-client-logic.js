@@ -3,7 +3,7 @@
  *
  * @constant
  */
-var ENDPOINT_URL_ROOT = "http://localhost:8080/iotdemo";
+var ENDPOINT_URL_ROOT = "http://localhost:8000/edgedemo_datacenter";
 
 /**
  * Google Maps widget animation refresh interval, in milliseconds.
