@@ -82,20 +82,26 @@ var gViolationsTable = new Tabulator("#violations_table", {
 var gAverageSpeedData = { };
 
 /**
- * Requests that the backend Tomcat server start the Hazelcast Jet pipeline.
- * Should be invoked as the "onclick" action of the "Start" button in the
- * web UI.
+ * Requests that the backend Tomcat server clears all Map data cached
+ * in the coordinates, average speed, and policy violations IMaps in
+ * the Hazelcast IMDG data store. This has the effect of resetting
+ * all controls in the UI.
  */
-function RequestStart( )
+function ResetState( )
 {
-    var startEndpointUrl = ENDPOINT_URL_ROOT + "/start";
-    var requestJSON = JSON.stringify({ "actionId": "START" });
+    var controlEndpointUrl = ENDPOINT_URL_ROOT + "/control";
+    var requestJSON = JSON.stringify({ "actionId": "RESET" });
 
     var xhr = new XMLHttpRequest( );
-    xhr.open("POST", startEndpointUrl);
+    xhr.open("POST", controlEndpointUrl);
     xhr.setRequestHeader("Content-Type", "application/json");
 
     xhr.send(requestJSON);
+
+    gMap = null;
+    gMarkers = [ ];
+    InitMap( );
+    gAverageSpeedData = { };
 }
 
 /**
