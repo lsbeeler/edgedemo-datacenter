@@ -1,11 +1,4 @@
 /**
- * Root path of all backend RESTful servlet URLs
- *
- * @constant
- */
-var ENDPOINT_URL_ROOT = "http://localhost:8000/edgedemo_datacenter";
-
-/**
  * Google Maps widget animation refresh interval, in milliseconds.
  * Set by default to 1/15th of a second (i.e., 15 frames per second)
  * to achieve relatively smooth motion.
@@ -89,7 +82,7 @@ var gAverageSpeedData = { };
  */
 function ResetState( )
 {
-    var controlEndpointUrl = ENDPOINT_URL_ROOT + "/control";
+    var controlEndpointUrl = "control";
     var requestJSON = JSON.stringify({ "actionId": "RESET" });
 
     var xhr = new XMLHttpRequest( );
@@ -124,7 +117,7 @@ function InitMap( )
  */
 function RefreshMap( )
 {
-    var geolocationEndpointUrl = ENDPOINT_URL_ROOT + "/geolocation";
+    var geolocationEndpointUrl = "geolocation";
 
     var xhr = new XMLHttpRequest( );
     xhr.open("GET", geolocationEndpointUrl);
@@ -178,7 +171,7 @@ function ParseGeolocationResponse(xhr)
  */
 function RefreshViolationsTable( )
 {
-    var policyEndpointUrl = ENDPOINT_URL_ROOT + "/policy";
+    var policyEndpointUrl = "policy";
     var xhr = new XMLHttpRequest( );
     xhr.open("GET", policyEndpointUrl);
     xhr.onreadystatechange = function (ev) {
@@ -214,7 +207,7 @@ function ShuffleDown(array)
  */
 function RefreshAverageSpeedChart( )
 {
-    var avgSpeedEndpointUrl = ENDPOINT_URL_ROOT + "/speed";
+    var avgSpeedEndpointUrl = "speed";
     var xhr = new XMLHttpRequest( );
     xhr.open("GET", avgSpeedEndpointUrl);
     xhr.onreadystatechange = function (ev) {
@@ -282,14 +275,14 @@ function RedrawAverageSpeedChart( )
     }
 
     var layout = {
-      yaxis: {
-          title: "Average Speed",
-          range: [0, 50]
-      },
+        yaxis: {
+            title: "Average Speed",
+            range: [0, 50]
+        },
 
-      xaxis: {
-        range: [0, MAX_AVERAGE_SPEED_DATA_POINTS]
-      }
+        xaxis: {
+            range: [0, MAX_AVERAGE_SPEED_DATA_POINTS]
+        }
     };
 
     Plotly.newPlot(plotDiv, traces, layout);
